@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | 2022-2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --accent: #f5f5f5;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .playfair { font-family: 'Playfair Display', serif; }
+        
+        /* Transitions */
+        .section {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Nav hover effect */
+        .nav-link {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-link:hover {
+            font-style: italic;
+            letter-spacing: -0.02em;
+            padding-left: 1rem;
+        }
+
+        /* Media Hover */
+        .media-item {
+            cursor: crosshair;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .media-container:hover .media-item {
+            transform: scale(1.03);
+        }
+
+        /* Lightbox */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: white;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        #lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 2px; }
+        ::-webkit-scrollbar-track { background: white; }
+        ::-webkit-scrollbar-thumb { background: #eee; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body>
+
+    <!-- LIGHTBOX / MODAL -->
+    <div id="lightbox" class="flex-col items-center justify-center p-8 md:p-24">
+        <button id="close-lightbox" class="fixed top-12 right-12 text-xs uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity p-4">Close</button>
+        <div class="max-w-5xl w-full h-full flex flex-col items-center justify-center">
+            <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain">
+            <div class="mt-12 text-center">
+                <p id="lightbox-title" class="text-[10px] tracking-[0.5em] uppercase opacity-30 mb-2"></p>
+                <p id="lightbox-desc" class="text-sm italic font-light opacity-60"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOME SECTION -->
+    <section id="home" class="section active min-h-screen flex flex-col items-center justify-center px-6">
+        <nav class="flex flex-col items-center space-y-6 md:space-y-10">
+            <button data-target="about" class="nav-link text-3xl md:text-6xl font-light tracking-tighter uppercase playfair">About Me</button>
+            <button data-target="demons" class="nav-link text-3xl md:text-6xl font-light tracking-tighter uppercase playfair">Ils aiment mes démons</button>
+            <button data-target="fashion" class="nav-link text-3xl md:text-6xl font-light tracking-tighter uppercase playfair">Fashion Design</button>
+            <button data-target="graphic" class="nav-link text-3xl md:text-6xl font-light tracking-tighter uppercase playfair">Graphic Design</button>
+            <button data-target="music" class="nav-link text-3xl md:text-6xl font-light tracking-tighter uppercase playfair">Music Industry</button>
+        </nav>
+        <div class="absolute bottom-12 left-12 text-[9px] tracking-[0.4em] uppercase opacity-30">Portfolio / 22—25</div>
+        <button data-target="contact" class="absolute bottom-12 right-12 text-[10px] tracking-widest uppercase opacity-40 hover:opacity-100 transition-opacity">Contact →</button>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section min-h-screen px-6 py-32 md:px-32 flex flex-col items-center">
+        <div class="w-full max-w-4xl">
+            <button data-target="home" class="text-[10px] tracking-widest uppercase mb-24 opacity-30 hover:opacity-100">Back</button>
+            <h1 class="text-6xl md:text-9xl playfair italic font-light mb-16 tracking-tighter">The Artist</h1>
+            <div class="max-w-xl text-lg font-light leading-relaxed space-y-12 opacity-70">
+                <p>Curating the intersection of fashion, sound, and visual identity. My practice is defined by a commitment to structural purity and the beauty found in digital distortion.</p>
+                <p>Based in Paris, working globally. Since 2022, I have focused on building narratives that prioritize silence and aesthetic resonance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMONS SECTION -->
+    <section id="demons" class="section min-h-screen px-6 py-32 md:px-32 flex flex-col items-center">
+        <div class="w-full max-w-6xl text-center mb-48">
+            <button data-target="home" class="text-[10px] tracking-widest uppercase mb-24 opacity-30 hover:opacity-100">Back</button>
+            <h1 class="text-4xl md:text-7xl playfair font-light uppercase tracking-tighter mb-8 italic">Ils aiment mes démons</h1>
+            <p class="max-w-2xl mx-auto text-base font-light italic opacity-50">"A collection exploring the hidden fragments of the subconscious."</p>
+        </div>
+        <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-32">
+            <div class="media-container cursor-crosshair" onclick="openLightbox('https://picsum.photos/1200/1800?random=1', 'Demons', 'Spirit of the Abyss')">
+                <div class="aspect-[2/3] overflow-hidden bg-neutral-50 p-1">
+                    <img src="https://picsum.photos/1200/1800?random=1" class="media-item w-full h-full object-cover">
+                </div>
+                <p class="mt-6 text-[9px] tracking-widest uppercase opacity-30 text-center">Spirit of the Abyss</p>
+            </div>
+            <div class="media-container cursor-crosshair" onclick="openLightbox('https://picsum.photos/1200/1800?random=2', 'Demons', 'Noir Resonance')">
+                <div class="aspect-[2/3] overflow-hidden bg-neutral-50 p-1">
+                    <img src="https://picsum.photos/1200/1800?random=2" class="media-item w-full h-full object-cover">
+                </div>
+                <p class="mt-6 text-[9px] tracking-widest uppercase opacity-30 text-center">Noir Resonance</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FASHION SECTION -->
+    <section id="fashion" class="section min-h-screen px-6 py-32 md:px-32 flex flex-col items-center">
+        <div class="w-full max-w-7xl mb-64 flex justify-between items-end">
+            <button data-target="home" class="text-[10px] tracking-widest uppercase opacity-30 hover:opacity-100">Back</button>
+            <h1 class="text-6xl md:text-[12rem] playfair font-light uppercase tracking-tighter leading-none">Fashion</h1>
+        </div>
+        
+        <div class="w-full max-w-6xl space-y-96">
+            <div>
+                <h2 class="text-3xl font-light tracking-[0.3em] uppercase mb-16 border-b pb-8">Corrupted Era</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="media-container cursor-pointer" onclick="openLightbox('https://picsum.photos/1200/1600?random=10', 'Corrupted Era', 'Structure 01')">
+                        <img src="https://picsum.photos/1200/1600?random=10" class="media-item w-full h-auto grayscale hover:grayscale-0">
+                    </div>
+                    <div class="media-container cursor-pointer" onclick="openLightbox('https://picsum.photos/1200/1600?random=11', 'Corrupted Era', 'Decay 04')">
+                        <img src="https://picsum.photos/1200/1600?random=11" class="media-item w-full h-auto grayscale hover:grayscale-0">
+                    </div>
+                    <div class="media-container cursor-pointer bg-neutral-50 flex items-center justify-center p-12">
+                        <span class="text-[10px] tracking-widest uppercase opacity-20">Video Piece 02</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-right">
+                <h2 class="text-3xl font-light tracking-[0.3em] uppercase mb-16 border-b pb-8">Yüna</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-24 max-w-5xl ml-auto">
+                    <div class="media-container cursor-pointer" onclick="openLightbox('https://picsum.photos/1200/1200?random=15', 'Yüna', 'Symmetry Study')">
+                        <img src="https://picsum.photos/1200/1200?random=15" class="media-item w-full h-auto">
+                    </div>
+                    <div class="media-container cursor-pointer" onclick="openLightbox('https://picsum.photos/1200/1200?random=16', 'Yüna', 'Minimalist Shell')">
+                        <img src="https://picsum.photos/1200/1200?random=16" class="media-item w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRAPHIC SECTION -->
+    <section id="graphic" class="section min-h-screen px-6 py-32 md:px-32 flex flex-col items-center">
+        <header class="w-full max-w-7xl mb-48 text-center">
+            <button data-target="home" class="text-[10px] tracking-widest uppercase mb-24 opacity-30">Back</button>
+            <h1 class="text-5xl md:text-[10rem] playfair italic font-light tracking-tighter leading-none mb-12">Graphics</h1>
+        </header>
+        <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-32">
+            <div class="media-container p-16 bg-neutral-50 border border-neutral-100" onclick="openLightbox('https://picsum.photos/1000/1500?random=20', 'Graphics', 'Brutalist Typography')">
+                <img src="https://picsum.photos/1000/1500?random=20" class="media-item w-full h-auto shadow-2xl">
+            </div>
+            <div class="media-container p-16 bg-neutral-50 border border-neutral-100 md:mt-48" onclick="openLightbox('https://picsum.photos/1500/1000?random=21', 'Graphics', 'Visual Identity 2024')">
+                <img src="https://picsum.photos/1500/1000?random=21" class="media-item w-full h-auto shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- MUSIC SECTION -->
+    <section id="music" class="section min-h-screen px-6 py-32 md:px-32 flex flex-col">
+        <div class="w-full max-w-7xl mb-48">
+            <button data-target="home" class="text-[10px] tracking-widest uppercase mb-24 opacity-30">Back</button>
+            <h1 class="text-4xl md:text-6xl font-light tracking-[0.4em] uppercase opacity-80">Music Industry</h1>
+        </div>
+
+        <div class="space-y-96">
+            <div class="flex flex-col md:flex-row gap-24 items-start">
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-7xl md:text-9xl playfair italic mb-12">Zola</h2>
+                    <img src="https://picsum.photos/1200/1500?random=30" class="w-full grayscale hover:grayscale-0 transition-all duration-1000 cursor-pointer" onclick="openLightbox('https://picsum.photos/1200/1500?random=30', 'Music', 'Zola Tour Visuals')">
+                </div>
+                <p class="md:pt-48 max-w-xs text-sm font-light opacity-50 uppercase tracking-widest leading-loose">Tour Photography & Creative Direction for Zola’s 2024 Project.</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <h2 class="text-3xl font-light uppercase tracking-[1em] mb-12">MojixSboy</h2>
+                <div class="w-full max-w-6xl aspect-video bg-neutral-50 flex items-center justify-center cursor-wait group border border-neutral-100 overflow-hidden">
+                    <div class="w-px h-12 bg-black/10 group-hover:h-24 transition-all duration-1000"></div>
+                    <span class="text-[9px] tracking-[1.5em] uppercase opacity-30 ml-8">Motion Fragment</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row-reverse gap-24">
+                <div class="w-full md:w-1/2 text-right">
+                    <h2 class="text-6xl md:text-8xl playfair italic mb-12">JayB</h2>
+                    <img src="https://picsum.photos/1200/1500?random=35" class="w-full grayscale hover:grayscale-0 transition-all duration-1000 cursor-pointer ml-auto" onclick="openLightbox('https://picsum.photos/1200/1500?random=35', 'Music', 'Zenith Identity')">
+                </div>
+                <div class="md:pt-48">
+                   <p class="text-xs tracking-widest opacity-30 uppercase">Zenith Campaign / 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section min-h-screen flex flex-col items-center justify-center px-6">
+        <div class="w-full max-w-5xl">
+            <button data-target="home" class="text-[10px] tracking-widest uppercase mb-24 opacity-30 hover:opacity-100 inline-block">Home</button>
+            <h1 class="text-7xl md:text-[10rem] playfair font-light tracking-tighter mb-24 italic leading-none">Connect</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-32">
+                <div class="space-y-16">
+                    <div>
+                        <h3 class="text-[9px] tracking-widest uppercase opacity-30 mb-6">Enquiries</h3>
+                        <a href="mailto:studio@portfolio.com" class="text-2xl font-light border-b border-black/5 pb-2 hover:italic transition-all inline-block">studio@portfolio.com</a>
+                    </div>
+                    <div class="flex flex-col space-y-4">
+                        <a href="#" class="text-base font-light opacity-50 hover:opacity-100 hover:tracking-widest transition-all">Instagram</a>
+                        <a href="#" class="text-base font-light opacity-50 hover:opacity-100 hover:tracking-widest transition-all">LinkedIn</a>
+                    </div>
+                </div>
+
+                <form onsubmit="event.preventDefault(); alert('Message sent.');" class="flex flex-col space-y-12">
+                    <input type="email" placeholder="Email" class="bg-transparent border-b border-neutral-100 py-4 focus:outline-none focus:border-black transition-colors placeholder:text-[9px] placeholder:uppercase placeholder:tracking-[0.4em] font-light" required>
+                    <textarea placeholder="Message" rows="3" class="bg-transparent border-b border-neutral-100 py-4 focus:outline-none focus:border-black transition-colors placeholder:text-[9px] placeholder:uppercase placeholder:tracking-[0.4em] font-light resize-none" required></textarea>
+                    <button type="submit" class="text-left text-[10px] tracking-[0.5em] uppercase opacity-40 hover:opacity-100 transition-opacity py-4">Send →</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="index.tsx"></script>
+</body>
+</html>
